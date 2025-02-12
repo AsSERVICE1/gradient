@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        body {
+            background-image: linear-gradient(to right, #000000, #e91a1a);
+        }
+
+        .main {
+            width: 15%;
+            margin: auto;
+            margin-top: 15%;
+        }
+
+        .btn-main {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-main button {
+            padding: 10px 25px;
+            border-radius: 10px;
+            border: 0;
+            outline: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .btn-main button:nth-child(1) {
+            background-color: #000000;
+        }
+
+        .btn-main button:nth-child(2) {
+            background-color: #e91a1a;
+        }
+
+        .main h2 {
+            font-size: 20px;
+            background-color: rgba(97, 97, 97, 0.507);
+            border-left: 3px solid #e91a1a;
+            border-radius: 5px;
+            padding: 10px 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class=btn-main>
+            <button id="btn1">#000000</button>
+            <button id="btn2">#6d3d3d</button>
+        </div>
+        <h2 class="heading">background-image: linear-gradient(to right, #000000 , #6d3d3d);</h2>
+    </div>
+
+
+
+    <script>
+        let btn1 = document.getElementById('btn1');
+        let btn2 = document.getElementById('btn2');
+        let heading = document.querySelector('.heading')
+
+        
+
+        let rgb1 = "#000000"
+        let rgb2 = "#6d3d3d"
+
+
+        const colorchange = () =>{
+            let numbers = '0123456789abcdef';
+        let color = '#';
+            
+            for (let i = 0; i < 6; i++){
+                color = color + numbers[Math.floor(Math.random() * 16)];
+                
+            }
+            // console.log(color)
+            return color;
+            
+            
+        }
+
+
+        const randomnumber1 = () => {
+            rgb1 = colorchange();
+
+            document.body.style.backgroundImage = `linear-gradient(to right, ${rgb1} , ${rgb2})`;
+            heading.innerHTML = `background-image: linear-gradient(to right, ${rgb1} , ${rgb2});`;
+            btn1.innerText = rgb1;
+        }
+
+        const randomnumber2 = () => {
+            rgb2 = colorchange();
+            document.body.style.backgroundImage = `linear-gradient(to right, ${rgb1} , ${rgb2})`;
+            heading.innerHTML = `background-image: linear-gradient(to right, ${rgb1} , ${rgb2});`;
+            btn2.innerText = rgb2;
+
+        }
+
+
+        heading.addEventListener('click', ()=>{
+            navigator.clipboard.writeText(heading.innerText)
+            alert('text has been copied')
+        })
+
+        btn1.addEventListener("click", randomnumber1);
+        btn2.addEventListener('click', randomnumber2);
+    </script>
+</body>
+
+</html>
